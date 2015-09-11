@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/joeyfeldberg/rust-opensubtitles.svg?branch=master)](https://travis-ci.org/joeyfeldberg/rust-opensubtitles)
+
 Toy wrapper for opensubtitles API, this is not for any serious use of course.
 Just a fun little toy that can search a matching subtitle for a given movie file path.
 It includes an example implementation that can search recursively a given path for movie files and download their matching subtitle.

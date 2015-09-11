@@ -1,0 +1,21 @@
+[package]
+name = "opensubtitles"
+version = "0.1.0"
+authors = ["vagrant"]
+
+[dependencies.rust-xmlrpc]
+git = "https://github.com/joeyfeldberg/rust-xmlrpc.git"
+
+[dependencies]
+rustc-serialize = "0.3"
+byteorder = "0.3"
+zip = "0.1.11"
+hyper = "*"
+
+[lib]
+name = "opensubtitles"
+path = "src/lib.rs"
+
+[[bin]]
+name = "opensubtitles-downloader"
+path = "src/main.rs"

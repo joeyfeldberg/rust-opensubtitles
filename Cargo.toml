@@ -10,7 +10,7 @@ git = "https://github.com/joeyfeldberg/rust-xmlrpc.git"
 rustc-serialize = "0.3"
 byteorder = "0.3"
 zip = "0.1.11"
-hyper = "*"
+hyper = "0.6.15"
 
 [lib]
 name = "opensubtitles"

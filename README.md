@@ -20,3 +20,9 @@ opensubtitles-downloader /some/path eng
 ```
 
 This will recursively traverse all sub directories of /some/path and will try to download subtitles for any video file it finds.
+
+```
+opensubtitles-downloader /some/path/to/movie.{mkv,mp4,avi} eng
+```
+
+This will will try to download the subtitle for the given video video file.

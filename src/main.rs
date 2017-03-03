@@ -14,7 +14,7 @@ fn get_sub_for_file(filename: &str, lang: &str) -> Result<()> {
   let (hash, size) = hash::get_file_hash_and_size(&filename).unwrap();
   let hash_str = hash::format_hash_in_hex(hash);
   println!("Calculated hash for {}: {} and size {}", filename, hash_str, size);
-  let client = client::OpenSubtitlesClient::create_client("", "", "en", "OSTestUserAgent").ok().unwrap();
+  let client = client::OpenSubtitlesClient::create_client("", "", "en", "OSTestUserAgentTemp").ok().unwrap();
   let subs: Vec<_> = client.search_subtitles(&hash_str, size, lang).unwrap();
 
   if subs.is_empty() {
@@ -42,6 +42,22 @@ fn get_sub_for_file(filename: &str, lang: &str) -> Result<()> {
 fn get_all_movie_files(path: &str) -> Vec<String> {
   let mut res: Vec<String> = Vec::new();
   let known_files_ext = ["mkv", "avi", "mp4"];
+
+  let entry_path = Path::new(&path);
+  let is_dir = std::fs::metadata(entry_path).unwrap().is_dir();
+
+  if !is_dir {
+    let path = entry_path.to_path_buf();
+    if let Some(ext) = path.extension() {
+        if known_files_ext.iter().any(|&x| x == ext) {
+            println!("found {:?}", path.file_name());
+            res.push(path.to_str().unwrap().into());
+        }
+    }
+
+    return res;
+  }
+
   for entry in std::fs::read_dir(&Path::new(&path)).unwrap() {
     let entry: std::fs::DirEntry = entry.unwrap();
     if std::fs::metadata(&entry.path()).unwrap().is_dir() {

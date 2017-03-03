@@ -93,6 +93,6 @@ fn test_bad_login() {
 
 #[test]
 fn test_good_login() {
-  let res = OpenSubtitlesClient::create_client("", "", "eng", "OSTestUserAgent");
+  let res = OpenSubtitlesClient::create_client("", "", "eng", "OSTestUserAgentTemp");
   assert!(res.is_ok());
 }
